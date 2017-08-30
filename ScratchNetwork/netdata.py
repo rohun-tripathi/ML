@@ -82,6 +82,7 @@ def cross_val(x_train, y_train, test_size=0.2, k=-1):
 
     return x_train, np.array(x_test), y_train, np.array(y_test)
 
+
 """
     The method which deletes names of the animals from the datasets
 
@@ -94,25 +95,3 @@ def delete_names(x_train, x_test):
     x_train = np.delete(x_train, 0, 1).astype(int)
     x_test = np.delete(x_test, 0, 1).astype(int)
     return x_train, x_test
-
-"""
-    The method which calculates the average
-
-    Parameters:
-    Array.
-"""
-
-
-def average(array):
-    return sum(array)/len(array)
-
-"""
-    The method which calculates standard deviation
-
-    Parameters:
-    Array.
-"""
-
-
-def std(array, mean):
-    return (sum((array - mean)**2)/len(array))**(1/2)

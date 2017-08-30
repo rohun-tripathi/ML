@@ -60,14 +60,12 @@ class Neural(object):
         reg_lambda: regularization strength;
         epsilon: learning rate for gradient descent.
     """
-    def train_model(self, x_train, y_train, num_passes, epsilon, text_widget, reg_lambda=0.01, print_loss=False):
+    def train_model(self, x_train, y_train, num_passes, epsilon, reg_lambda=0.01, print_loss=False):
         # Check values
         if num_passes < 10:
             num_passes = 100
-            text_widget.insert('end', 'Iterations were changed to optimal(100)\n\n', 'warning')
         if epsilon <= 0 or epsilon >= 0.1:
             epsilon = 0.01
-            text_widget.insert('end', 'Learning rate was changed to optimal(0.01)\n\n', 'warning')
 
         for i in range(1, num_passes+1):
             # Forward propagation
@@ -103,7 +101,7 @@ class Neural(object):
             if print_loss and i % 10 == 0:
                 error = float(self.evaluate_loss(x_train, y_train, reg_lambda))
                 error = "Log Loss during %i iteration: %.3f" % (i, error) + '\n'
-                text_widget.insert('end', error, 'color')
+                print(error)
 
                 epsilon -= epsilon*0.1
 
